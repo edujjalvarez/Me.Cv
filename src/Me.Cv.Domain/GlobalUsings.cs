@@ -1,0 +1,1 @@
+﻿global using Me.Cv.Domain.Entities;

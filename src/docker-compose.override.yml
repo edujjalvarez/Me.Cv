@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  me.cv.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      # - AllowedOrigins__Loc=http://localhost:4200
+      # - AllowedOrigins__Sit=https://sit.put-here-your-own-domain.com
+      # - AllowedOrigins__Uat=https://uat.put-here-your-own-domain.com
+      # - AllowedOrigins__Prd=https://put-here-your-own-domain.com
+      - EmailSettings__Smpt=smtp.gmail.com
+      - EmailSettings__Port=587
+      - EmailSettings__UserName=PUT_HERE_YOUR_EMAIL_ADDRESS
+      - EmailSettings__Password=PUT_HERE_YOUR_APP_PASSWORD
+      - ReCaptchaSettings__VerificationUrl=https://www.google.com/recaptcha/api/siteverify
+      - ReCaptchaSettings__SecretKey=PUT_HERE_YOUR_GOOGLE_RECAPTCHA_SECRET_KEY
+    ports:
+      - "5009:8080"
+      - "7121:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

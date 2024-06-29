@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  me.cv.api:
+    image: ${DOCKER_REGISTRY-}mecvapi
+    build:
+      context: .
+      dockerfile: Me.Cv.Api/Dockerfile
